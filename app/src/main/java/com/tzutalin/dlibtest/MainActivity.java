@@ -238,13 +238,18 @@ public class MainActivity extends AppCompatActivity {
             mPersonDet = new PedestrianDet();
         }
         if (mFaceDet == null) {
-            mFaceDet = new FaceDet(Constants.getFaceShapeModelPath());
+//            mFaceDet = new FaceDet(Constants.getFaceShapeModelPath());
+            mFaceDet = new FaceDet();
         }
 
         Log.d(TAG, "Image path: " + imgPath);
         List<Card> cardrets = new ArrayList<>();
-        List<VisionDetRet> faceList = mFaceDet.detect(imgPath);
-        if (faceList.size() > 0) {
+        List<VisionDetRet> faceList = null;
+        for ( int i = 0; i < 10; ++i) {
+            faceList = mFaceDet.detect(imgPath);
+            Log.v(TAG, "Running dlib face detector, # repetition: " + i);
+        }
+        if (faceList != null && faceList.size() > 0) {
             Card card = new Card.Builder(MainActivity.this)
                     .withProvider(BigImageCardProvider.class)
                     .setDrawable(drawRect(imgPath, faceList, Color.GREEN))

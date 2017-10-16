@@ -84,7 +84,8 @@ public class OnGetImageListener implements OnImageAvailableListener {
         this.mContext = context;
         this.mTransparentTitleView = scoreView;
         this.mInferenceHandler = handler;
-        mFaceDet = new FaceDet(Constants.getFaceShapeModelPath());
+        //mFaceDet = new FaceDet(Constants.getFaceShapeModelPath());
+        mFaceDet = new FaceDet(); //w/o landmarks
         mWindow = new FloatingCameraWindow(mContext);
 
         mFaceLandmardkPaint = new Paint();

@@ -6,7 +6,7 @@ group = "com.tzutalin.dlib-android-app"
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "${rootProject.ext.androidBuildToolsVersion}"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 14
